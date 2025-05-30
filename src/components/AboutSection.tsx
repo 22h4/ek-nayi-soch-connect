@@ -1,10 +1,12 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Heart, Users, BookOpen, Lightbulb, Sparkles, Zap } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Heart, Users, Globe, Lightbulb, ArrowRight, CheckCircle, Target, Award } from 'lucide-react';
 
 const AboutSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -24,127 +26,209 @@ const AboutSection = () => {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (sectionRef.current) {
+        const rect = (sectionRef.current as HTMLElement).getBoundingClientRect();
+        setMousePosition({
+          x: ((e.clientX - rect.left) / rect.width) * 100,
+          y: ((e.clientY - rect.top) / rect.height) * 100,
+        });
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   const values = [
     {
       icon: Heart,
       title: 'Compassion',
-      description: 'We approach every community with empathy and understanding, ensuring our support truly meets their needs.',
-      gradient: 'from-pink-500 via-rose-500 to-red-500'
+      description: 'We approach every situation with empathy and understanding.',
+      color: 'from-pink-500 to-red-500'
+    },
+    {
+      icon: Globe,
+      title: 'Impact',
+      description: 'Creating meaningful change that lasts for generations.',
+      color: 'from-warm-blue to-blue-600'
     },
     {
       icon: Users,
       title: 'Community',
-      description: 'Building strong partnerships with local communities to create sustainable, long-lasting positive change.',
-      gradient: 'from-blue-500 via-indigo-500 to-purple-500'
-    },
-    {
-      icon: BookOpen,
-      title: 'Education',
-      description: 'Believing that quality education is the foundation for breaking cycles of poverty and creating opportunities.',
-      gradient: 'from-emerald-500 via-green-500 to-teal-500'
+      description: 'Building stronger communities through collaboration.',
+      color: 'from-soft-green to-green-600'
     },
     {
       icon: Lightbulb,
       title: 'Innovation',
-      description: 'Using creative solutions and modern approaches to address traditional challenges in new ways.',
-      gradient: 'from-orange-500 via-amber-500 to-yellow-500'
+      description: 'Finding creative solutions to complex challenges.',
+      color: 'from-warm-orange to-pink-500'
     }
   ];
 
+  const achievements = [
+    { number: '2022', label: 'Founded', icon: Award },
+    { number: '50+', label: 'Communities', icon: Globe },
+    { number: '10K+', label: 'Lives Changed', icon: Heart },
+    { number: '2.5K+', label: 'Volunteers', icon: Users }
+  ];
+
   return (
-    <section id="about" ref={sectionRef} className="py-20 gradient-bg relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10 dark:opacity-20">
-        <div className="absolute top-10 right-10 w-64 h-64 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mix-blend-multiply filter blur-xl animate-float"></div>
-        <div className="absolute bottom-10 left-10 w-72 h-72 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full mix-blend-multiply filter blur-xl animate-float" style={{ animationDelay: '1s' }}></div>
+    <section id="about" ref={sectionRef} className="py-32 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
+      {/* Interactive Background Elements */}
+      <div className="absolute inset-0 opacity-20">
+        <div 
+          className="absolute w-64 h-64 bg-gradient-to-r from-warm-orange to-pink-500 rounded-full mix-blend-multiply filter blur-3xl animate-float premium-glow"
+          style={{
+            top: `${20 + mousePosition.y * 0.05}%`,
+            left: `${10 + mousePosition.x * 0.05}%`,
+          }}
+        ></div>
+        <div 
+          className="absolute w-48 h-48 bg-gradient-to-r from-soft-green to-emerald-500 rounded-full mix-blend-multiply filter blur-3xl animate-float"
+          style={{
+            bottom: `${20 + mousePosition.y * -0.05}%`,
+            right: `${15 + mousePosition.x * 0.05}%`,
+            animationDelay: '2s'
+          }}
+        ></div>
       </div>
 
-      <div className="section-divider mb-16"></div>
-      
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className={`text-center mb-16 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
-            <div className="inline-flex items-center px-6 py-3 glass-card neon-glow text-warm-orange font-medium mb-6">
-              <Heart className="w-5 h-5 mr-3 animate-pulse" />
-              <span className="text-gradient">About Our Mission</span>
-              <Sparkles className="w-4 h-4 ml-3 animate-bounce" />
+          <div className={`text-center mb-20 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+            <div className="inline-flex items-center px-6 py-3 glass-card neon-glow text-warm-orange font-medium mb-8 rounded-full">
+              <Target className="w-5 h-5 mr-3 animate-pulse" />
+              About Our Foundation
             </div>
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-              <span className="text-gray-800 dark:text-white">Transforming Lives Through</span>
-              <span className="block text-gradient">Education & Care</span>
+            <h2 className="text-5xl lg:text-7xl font-bold text-gray-800 mb-8">
+              <span className="text-gradient premium-glow">Ek Nayi Soch</span>
+              <span className="block text-gray-800">Foundation</span>
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Founded with the belief that every child deserves access to quality education and healthcare, 
-              Ek Nayi Soch has been working tirelessly to bridge the gap between privilege and possibility.
+            <p className="text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              Founded in 2022, we are dedicated to creating sustainable positive change through education, 
+              awareness, and community empowerment across India.
             </p>
           </div>
 
-          {/* Story Section */}
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
-            <div className={`space-y-6 ${isVisible ? 'animate-slide-in-left' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
-              <h3 className="text-3xl font-bold text-gray-800 dark:text-white">Our Story</h3>
-              <div className="space-y-4 text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
-                <p>
-                  It all began with a simple observation: talented children in rural communities 
-                  were being held back not by lack of ability, but by lack of opportunity. In 2015, 
-                  our founders visited a small village in Rajasthan and met children who walked 
-                  miles to attend a school with no proper infrastructure.
-                </p>
-                <p>
-                  That day, we made a promise. We would work to ensure that geography, economic 
-                  status, or social barriers would never again prevent a child from reaching 
-                  their full potential. Today, we've grown into a movement of educators, 
-                  healthcare workers, and passionate volunteers.
-                </p>
-                <p>
-                  Every program we run, every school we build, and every child we support 
-                  brings us closer to a future where opportunity is a right, not a privilege.
-                </p>
-              </div>
+          {/* Main Content Grid */}
+          <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+            {/* Left Content */}
+            <div className={`space-y-8 ${isVisible ? 'animate-slide-in-left' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
+              <Card className="floating-card premium-glow shape-3d">
+                <CardContent className="p-10">
+                  <h3 className="text-3xl font-bold text-gradient mb-6">Our Mission</h3>
+                  <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                    To empower underprivileged communities through accessible education, social awareness, 
+                    and sustainable practices. We believe in creating a healthier, more informed, and equitable future for all.
+                  </p>
+                  <div className="flex items-center space-x-3 text-warm-orange">
+                    <CheckCircle className="w-6 h-6" />
+                    <span className="font-semibold">Registered NGO since 2022</span>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="floating-card premium-glow shape-3d">
+                <CardContent className="p-10">
+                  <h3 className="text-3xl font-bold text-gradient-blue mb-6">Our Vision</h3>
+                  <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                    A world where every individual, regardless of their background, has access to quality education, 
+                    healthcare, and the resources needed to lead a dignified life.
+                  </p>
+                  <div className="flex items-center space-x-3 text-warm-blue">
+                    <Globe className="w-6 h-6" />
+                    <span className="font-semibold">Serving communities across India</span>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
 
-            <div className={`relative ${isVisible ? 'animate-slide-in-right' : 'opacity-0'}`} style={{ animationDelay: '0.4s' }}>
-              <div className="gradient-card rounded-3xl h-80 relative overflow-hidden shadow-2xl neon-glow">
-                <div className="absolute inset-0 bg-gradient-to-br from-warm-blue via-blue-500 to-purple-600"></div>
-                <div className="absolute inset-0 glass-card"></div>
-                <div className="absolute inset-0 flex items-center justify-center text-white text-center p-8">
-                  <div>
-                    <div className="glass-card p-4 rounded-2xl mb-4 neon-glow">
-                      <div className="text-4xl font-bold mb-2">8+ Years</div>
-                      <div className="text-xl">of Dedicated Service</div>
-                    </div>
-                    <div className="text-lg opacity-90 flex items-center justify-center">
-                      <Zap className="w-5 h-5 mr-2 animate-pulse" />
-                      Building brighter futures together
-                    </div>
-                  </div>
-                </div>
+            {/* Right Content - Interactive 3D Stats */}
+            <div className={`${isVisible ? 'animate-slide-in-right' : 'opacity-0'}`} style={{ animationDelay: '0.4s' }}>
+              <div className="grid grid-cols-2 gap-8">
+                {achievements.map((achievement, index) => (
+                  <Card 
+                    key={achievement.label}
+                    className="floating-card premium-glow text-center group cursor-pointer shape-3d"
+                  >
+                    <CardContent className="p-8">
+                      <div className="w-16 h-16 bg-gradient-to-r from-warm-orange via-pink-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 interactive-sphere group-hover:scale-125 transition-all duration-500">
+                        <achievement.icon className="w-8 h-8 text-white" />
+                      </div>
+                      <div className="text-3xl font-bold text-gradient mb-2">{achievement.number}</div>
+                      <div className="text-gray-600 font-medium">{achievement.label}</div>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Values */}
-          <div className={`${isVisible ? 'animate-scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.6s' }}>
-            <h3 className="text-3xl font-bold text-gray-800 dark:text-white text-center mb-12">Our Core Values</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Values Section */}
+          <div className={`${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: '0.6s' }}>
+            <h3 className="text-4xl font-bold text-center text-gray-800 mb-16">
+              Our <span className="text-gradient">Core Values</span>
+            </h3>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
               {values.map((value, index) => (
-                <Card key={value.title} className="floating-card p-6 text-center hover-glow group neon-glow">
-                  <CardContent className="p-0">
-                    <div className={`w-16 h-16 bg-gradient-to-r ${value.gradient} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform neon-glow`}>
-                      <value.icon className="w-8 h-8 text-white" />
+                <Card 
+                  key={value.title}
+                  className="floating-card premium-glow group text-center shape-3d"
+                >
+                  <CardContent className="p-8">
+                    <div className={`w-20 h-20 bg-gradient-to-r ${value.color} rounded-full flex items-center justify-center mx-auto mb-6 interactive-sphere group-hover:scale-125 transition-all duration-500`}>
+                      <value.icon className="w-10 h-10 text-white" />
                     </div>
-                    <h4 className="text-xl font-bold text-gray-800 dark:text-white mb-3">{value.title}</h4>
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{value.description}</p>
+                    <h4 className="text-2xl font-bold text-gray-800 mb-4">{value.title}</h4>
+                    <p className="text-gray-600 leading-relaxed">{value.description}</p>
                   </CardContent>
                 </Card>
               ))}
             </div>
           </div>
+
+          {/* Contact Information */}
+          <div className={`text-center ${isVisible ? 'animate-scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.8s' }}>
+            <Card className="floating-card bg-gradient-to-br from-warm-orange/10 to-pink-500/10 border-warm-orange/20 premium-glow max-w-4xl mx-auto">
+              <CardContent className="p-12">
+                <h3 className="text-3xl font-bold text-gray-800 mb-6">Get In Touch</h3>
+                <div className="grid md:grid-cols-2 gap-8 mb-8">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-gradient-to-r from-warm-orange to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 interactive-sphere premium-glow">
+                      <Globe className="w-8 h-8 text-white" />
+                    </div>
+                    <h4 className="font-bold text-lg mb-2">Address</h4>
+                    <p className="text-gray-600">
+                      Ek Nayi Soch<br />
+                      Hazipur, Sector 104 Noida,<br />
+                      Uttar Pradesh - 201301
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-gradient-to-r from-warm-blue to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 interactive-sphere premium-glow">
+                      <Heart className="w-8 h-8 text-white" />
+                    </div>
+                    <h4 className="font-bold text-lg mb-2">Contact</h4>
+                    <p className="text-gray-600">
+                      Phone: +91 98990900197<br />
+                      Email: eknayisochfoundation.noida@gmail.com
+                    </p>
+                  </div>
+                </div>
+                <Button className="btn-primary text-lg px-8 py-4">
+                  Join Our Mission
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </div>
-      
-      <div className="section-divider mt-16"></div>
     </section>
   );
 };
