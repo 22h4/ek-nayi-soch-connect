@@ -1,8 +1,7 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { BookOpen, Heart, Users, Lightbulb, ArrowRight, CheckCircle, TreePine, Shield, Graduation } from 'lucide-react';
+import { BookOpen, Heart, Users, Lightbulb, ArrowRight, CheckCircle, TreePine, Shield, GraduationCap } from 'lucide-react';
 
 const WorkSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -55,7 +54,7 @@ const WorkSection = () => {
       ],
       impact: '5,000+ students educated',
       color: 'from-warm-blue to-blue-600',
-      bgIcon: Graduation
+      bgIcon: GraduationCap
     },
     {
       icon: Heart,
