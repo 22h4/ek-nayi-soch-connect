@@ -9,19 +9,32 @@ import StoriesSection from '@/components/StoriesSection';
 import DonationSection from '@/components/DonationSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
+import ParallaxWrapper from '@/components/ParallaxWrapper';
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       <Navigation />
-      <main>
+      <main className="relative">
         <HeroSection />
-        <AboutSection />
-        <WorkSection />
-        <ImpactSection />
-        <StoriesSection />
-        <DonationSection />
-        <ContactSection />
+        <ParallaxWrapper speed={0.05}>
+          <AboutSection />
+        </ParallaxWrapper>
+        <ParallaxWrapper speed={0.08}>
+          <WorkSection />
+        </ParallaxWrapper>
+        <ParallaxWrapper speed={0.03}>
+          <ImpactSection />
+        </ParallaxWrapper>
+        <ParallaxWrapper speed={0.06}>
+          <StoriesSection />
+        </ParallaxWrapper>
+        <ParallaxWrapper speed={0.04}>
+          <DonationSection />
+        </ParallaxWrapper>
+        <ParallaxWrapper speed={0.02}>
+          <ContactSection />
+        </ParallaxWrapper>
       </main>
       <Footer />
     </div>
