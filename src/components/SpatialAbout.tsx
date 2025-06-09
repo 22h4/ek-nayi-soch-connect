@@ -55,9 +55,9 @@ const SpatialAbout = () => {
   return (
     <section id="about" ref={sectionRef} className="content-section bg-spatial-2">
       <div className="container-spatial">
-        <div className="spatial-grid lg:grid-cols-2 items-center">
+        <div className="spatial-grid lg:grid-cols-2 items-center gap-16">
           {/* Left Content */}
-          <div className={`space-y-8 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+          <div className={`element-spacing ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
             <div className="inline-flex items-center px-6 py-3 glass-morphism text-emerald-600 font-semibold rounded-full">
               <Target className="w-5 h-5 mr-2" />
               About Our Mission
@@ -68,9 +68,9 @@ const SpatialAbout = () => {
               <span className="block text-emerald-600">Foundation</span>
             </h2>
             
-            <div className="space-y-6">
-              <Card className="spatial-card p-8">
-                <CardContent className="p-0">
+            <div className="space-y-8">
+              <Card className="spatial-card">
+                <CardContent className="card-content">
                   <h3 className="text-2xl font-bold text-emerald-700 mb-4">Our Vision</h3>
                   <p className="text-spatial">
                     A world where technology and compassion converge to eliminate inequality, 
@@ -80,8 +80,8 @@ const SpatialAbout = () => {
                 </CardContent>
               </Card>
 
-              <Card className="spatial-card p-8">
-                <CardContent className="p-0">
+              <Card className="spatial-card">
+                <CardContent className="card-content">
                   <h3 className="text-2xl font-bold text-emerald-700 mb-4">Our Mission</h3>
                   <p className="text-spatial">
                     To leverage cutting-edge solutions and grassroots initiatives to empower 
@@ -99,9 +99,9 @@ const SpatialAbout = () => {
           </div>
 
           {/* Right Content - Values */}
-          <div className={`space-y-8 ${isVisible ? 'animate-spatial-float' : 'opacity-0'}`}>
+          <div className={`element-spacing ${isVisible ? 'animate-spatial-float' : 'opacity-0'}`}>
             <div className="text-center mb-8">
-              <h3 className="text-3xl font-bold text-slate-800 mb-4">Our Core Values</h3>
+              <h3 className="text-3xl lg:text-4xl font-bold text-slate-800 mb-4">Our Core Values</h3>
               <p className="text-spatial">Principles that guide everything we do</p>
             </div>
 
@@ -109,10 +109,10 @@ const SpatialAbout = () => {
               {values.map((value, index) => (
                 <Card 
                   key={value.title}
-                  className="spatial-card p-6 text-center group cursor-pointer"
+                  className="spatial-card text-center group cursor-pointer"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <CardContent className="p-0">
+                  <CardContent className="card-content">
                     <div className={`w-16 h-16 bg-gradient-to-r ${value.color} rounded-3xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-all duration-500`}>
                       <value.icon className="w-8 h-8 text-white" />
                     </div>
@@ -124,8 +124,8 @@ const SpatialAbout = () => {
             </div>
 
             {/* Achievement Stats */}
-            <Card className="spatial-card p-8 bg-gradient-to-br from-emerald-50 to-green-50">
-              <CardContent className="p-0">
+            <Card className="spatial-card bg-gradient-to-br from-emerald-50 to-green-50 mt-8">
+              <CardContent className="card-content">
                 <div className="grid grid-cols-3 gap-6 text-center">
                   <div>
                     <div className="text-3xl font-bold text-emerald-600 mb-1">2022</div>

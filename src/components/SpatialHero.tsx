@@ -18,7 +18,7 @@ const SpatialHero = () => {
   };
 
   return (
-    <section id="home" className="content-section bg-spatial-1 spatial-container overflow-hidden">
+    <section id="home" className="content-section bg-spatial-1 spatial-container overflow-hidden min-h-screen flex items-center">
       {/* Floating background elements */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute w-96 h-96 emerald-gradient rounded-full blur-3xl top-20 left-10 animate-float-gentle"></div>
@@ -26,20 +26,22 @@ const SpatialHero = () => {
         <div className="absolute w-64 h-64 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full blur-2xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-morph"></div>
       </div>
 
-      <div className="container-spatial relative z-10">
-        <div className="spatial-grid lg:grid-cols-2 items-center min-h-screen pt-20">
+      <div className="container-spatial relative z-10 w-full">
+        <div className="spatial-grid lg:grid-cols-2 items-center gap-12 lg:gap-20">
           {/* Left Content */}
-          <div className={`space-y-8 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+          <div className={`element-spacing ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
             <div className="inline-flex items-center px-6 py-3 glass-morphism text-emerald-600 font-semibold rounded-full animate-spatial-pulse">
               <Sparkles className="w-5 h-5 mr-2" />
               Transforming Lives Through Innovation
             </div>
             
-            <h1 className="heading-spatial-xl">
-              <span className="block">Empowering</span>
-              <span className="block">Communities</span>
-              <span className="block text-emerald-600">One Life at a Time</span>
-            </h1>
+            <div className="space-y-4">
+              <h1 className="heading-spatial-xl">
+                <span className="block">Empowering</span>
+                <span className="block">Communities</span>
+                <span className="block text-emerald-600">One Life at a Time</span>
+              </h1>
+            </div>
             
             <p className="text-spatial max-w-2xl">
               Experience the future of community development with our innovative approach to education, 
@@ -47,7 +49,7 @@ const SpatialHero = () => {
               and compassion.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-6">
+            <div className="flex flex-col sm:flex-row gap-6 pt-4">
               <Button 
                 onClick={() => scrollToSection('#contact')}
                 className="btn-spatial group"
@@ -66,13 +68,13 @@ const SpatialHero = () => {
             </div>
 
             {/* Quick stats */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 pt-8">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 pt-12">
               {[
                 { icon: Users, value: '10,000+', label: 'Lives Impacted' },
                 { icon: BookOpen, value: '5,000+', label: 'Students' },
                 { icon: Leaf, value: '50+', label: 'Communities' }
               ].map((stat, index) => (
-                <div key={stat.label} className="spatial-card p-6 text-center interactive-element">
+                <div key={stat.label} className="spatial-card text-center interactive-element">
                   <div className="w-12 h-12 emerald-gradient rounded-2xl flex items-center justify-center mx-auto mb-4">
                     <stat.icon className="w-6 h-6 text-white" />
                   </div>
@@ -85,7 +87,7 @@ const SpatialHero = () => {
 
           {/* Right Content - 3D Visual */}
           <div className={`relative ${isVisible ? 'animate-spatial-float' : 'opacity-0'}`}>
-            <div className="spatial-card p-8 lg:p-12 h-[500px] lg:h-[600px] flex items-center justify-center relative overflow-hidden">
+            <div className="spatial-card h-[500px] lg:h-[600px] flex items-center justify-center relative overflow-hidden">
               {/* Background pattern */}
               <div className="absolute inset-0 opacity-10">
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-500 via-green-400 to-emerald-600"></div>
@@ -96,7 +98,7 @@ const SpatialHero = () => {
               </div>
               
               {/* Central element */}
-              <div className="relative z-10 text-center">
+              <div className="relative z-10 text-center card-content">
                 <div className="w-32 h-32 lg:w-40 lg:h-40 emerald-gradient rounded-3xl flex items-center justify-center mx-auto mb-8 animate-depth-shift">
                   <Leaf className="w-16 h-16 lg:w-20 lg:h-20 text-white" />
                 </div>
