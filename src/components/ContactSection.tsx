@@ -53,13 +53,11 @@ const ContactSection = () => {
       return;
     }
 
-    // Simulate form submission
     toast({
       title: "Message sent successfully! 🎉",
       description: "Thank you for reaching out. We'll get back to you soon.",
     });
 
-    // Reset form
     setFormData({
       name: '',
       email: '',
@@ -78,13 +76,13 @@ const ContactSection = () => {
     {
       icon: Phone,
       title: 'Call Us',
-      details: ['+91 98765 43210', '+91 11 2345 6789'],
+      details: ['+91 98990900197', '+91 11 2345 6789'],
       color: 'from-blue-500 to-blue-600'
     },
     {
       icon: Mail,
       title: 'Email Us',
-      details: ['hello@eknayisoch.org', 'donate@eknayisoch.org'],
+      details: ['eknayisochfoundation.noida@gmail.com', 'donate@eknayisoch.org'],
       color: 'from-green-500 to-green-600'
     },
     {
@@ -96,20 +94,20 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" ref={sectionRef} className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
+    <section id="contact" ref={sectionRef} className="section-spacing bg-gray-50">
+      <div className="container-spacing">
+        <div className="max-w-6xl mx-auto content-spacing">
           {/* Header */}
-          <div className={`text-center mb-16 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+          <div className={`text-center ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
             <div className="inline-flex items-center px-4 py-2 bg-warm-blue/10 rounded-full text-warm-blue font-medium mb-6">
               <Mail className="w-4 h-4 mr-2" />
               Get in Touch
             </div>
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">
+            <h2 className="heading-lg mb-6">
               Let's Work Together for
               <span className="block text-gradient">Positive Change</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-body max-w-3xl mx-auto">
               Have questions, want to volunteer, or looking to partner with us? 
               We'd love to hear from you and explore how we can make a difference together.
             </p>
@@ -117,10 +115,10 @@ const ContactSection = () => {
 
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Contact Form */}
-            <div className={`lg:col-span-2 ${isVisible ? 'animate-slide-in-left' : 'opacity-0'}`} style={{ animationDelay: '0.3s' }}>
+            <div className={`lg:col-span-2 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: '0.3s' }}>
               <Card className="floating-card">
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold text-gray-800 mb-6">Send us a Message</h3>
+                <CardContent className="mobile-padding lg:p-8">
+                  <h3 className="heading-md mb-6">Send us a Message</h3>
                   
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-6">
@@ -190,17 +188,17 @@ const ContactSection = () => {
             </div>
 
             {/* Contact Information */}
-            <div className={`space-y-6 ${isVisible ? 'animate-slide-in-right' : 'opacity-0'}`} style={{ animationDelay: '0.6s' }}>
+            <div className={`space-y-6 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`} style={{ animationDelay: '0.6s' }}>
               {contactInfo.map((info, index) => (
-                <Card key={info.title} className="floating-card hover-glow group">
-                  <CardContent className="p-6">
+                <Card key={info.title} className="floating-card group">
+                  <CardContent className="mobile-padding">
                     <div className={`w-12 h-12 bg-gradient-to-r ${info.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                       <info.icon className="w-6 h-6 text-white" />
                     </div>
                     <h4 className="text-lg font-bold text-gray-800 mb-3">{info.title}</h4>
                     <div className="space-y-1">
                       {info.details.map((detail, detailIndex) => (
-                        <p key={detailIndex} className="text-gray-600">{detail}</p>
+                        <p key={detailIndex} className="mobile-text text-gray-600">{detail}</p>
                       ))}
                     </div>
                   </CardContent>
@@ -209,10 +207,10 @@ const ContactSection = () => {
 
               {/* Quick Links */}
               <Card className="floating-card bg-gradient-to-br from-warm-orange/10 to-pink-500/10 border-warm-orange/20">
-                <CardContent className="p-6 text-center">
+                <CardContent className="mobile-padding text-center">
                   <Heart className="w-12 h-12 text-warm-orange mx-auto mb-4" />
                   <h4 className="text-lg font-bold text-gray-800 mb-3">Ready to Make a Difference?</h4>
-                  <p className="text-gray-600 mb-4">
+                  <p className="mobile-text text-gray-600 mb-4">
                     Join our community of changemakers and help us build a better tomorrow.
                   </p>
                   <div className="space-y-3">
