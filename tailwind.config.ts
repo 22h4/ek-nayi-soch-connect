@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -52,28 +51,27 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				},
-				'warm-orange': '#FF7A59',
-				'warm-blue': '#4285F4',
-				'soft-green': '#34A853',
-				'warm-yellow': '#FBBC04'
+				// Green spatial color system
+				emerald: {
+					50: 'hsl(var(--emerald-50))',
+					100: 'hsl(var(--emerald-100))',
+					200: 'hsl(var(--emerald-200))',
+					300: 'hsl(var(--emerald-300))',
+					400: 'hsl(var(--emerald-400))',
+					500: 'hsl(var(--emerald-500))',
+					600: 'hsl(var(--emerald-600))',
+					700: 'hsl(var(--emerald-700))',
+					800: 'hsl(var(--emerald-800))',
+					900: 'hsl(var(--emerald-900))',
+				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
-			boxShadow: {
-				'3xl': '0 35px 60px -12px rgba(0, 0, 0, 0.25)',
+			backdropBlur: {
+				'4xl': '72px',
 			},
 			keyframes: {
 				'accordion-down': {
@@ -90,6 +88,42 @@ export default {
 					},
 					to: {
 						height: '0'
+					}
+				},
+				'spatial-float': {
+					'0%, 100%': {
+						transform: 'translateY(0px) rotateX(0deg) rotateY(0deg)'
+					},
+					'25%': {
+						transform: 'translateY(-15px) rotateX(3deg) rotateY(2deg)'
+					},
+					'50%': {
+						transform: 'translateY(-30px) rotateX(0deg) rotateY(4deg)'
+					},
+					'75%': {
+						transform: 'translateY(-15px) rotateX(-3deg) rotateY(2deg)'
+					}
+				},
+				'spatial-glow': {
+					'0%, 100%': {
+						boxShadow: '0 0 20px rgba(16, 185, 129, 0.3)'
+					},
+					'50%': {
+						boxShadow: '0 0 40px rgba(16, 185, 129, 0.6), 0 0 60px rgba(16, 185, 129, 0.4)'
+					}
+				},
+				'depth-shift': {
+					'0%, 100%': {
+						transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)'
+					},
+					'25%': {
+						transform: 'perspective(1000px) rotateX(5deg) rotateY(5deg) translateZ(20px)'
+					},
+					'50%': {
+						transform: 'perspective(1000px) rotateX(0deg) rotateY(10deg) translateZ(40px)'
+					},
+					'75%': {
+						transform: 'perspective(1000px) rotateX(-5deg) rotateY(5deg) translateZ(20px)'
 					}
 				},
 				'fade-in': {
@@ -192,6 +226,9 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
+				'spatial-float': 'spatial-float 8s ease-in-out infinite',
+				'spatial-glow': 'spatial-glow 4s ease-in-out infinite',
+				'depth-shift': 'depth-shift 12s ease-in-out infinite',
 				'fade-in': 'fade-in 0.8s ease-out',
 				'slide-in-left': 'slide-in-left 0.8s ease-out',
 				'slide-in-right': 'slide-in-right 0.8s ease-out',

@@ -1,29 +1,27 @@
 
 import React from 'react';
-import Navigation from '@/components/Navigation';
-import HeroSection from '@/components/HeroSection';
-import AboutSection from '@/components/AboutSection';
-import WorkSection from '@/components/WorkSection';
-import ImpactSection from '@/components/ImpactSection';
-import StoriesSection from '@/components/StoriesSection';
-import DonationSection from '@/components/DonationSection';
-import ContactSection from '@/components/ContactSection';
-import Footer from '@/components/Footer';
+import SpatialNavigation from '@/components/SpatialNavigation';
+import SpatialHero from '@/components/SpatialHero';
+import SpatialAbout from '@/components/SpatialAbout';
+import SpatialPrograms from '@/components/SpatialPrograms';
+import SpatialImpact from '@/components/SpatialImpact';
+import SpatialStories from '@/components/SpatialStories';
+import SpatialContact from '@/components/SpatialContact';
+import SpatialFooter from '@/components/SpatialFooter';
 
 const Index = () => {
   return (
-    <div className="min-h-screen w-full no-spacing">
-      <Navigation />
-      <main className="w-full no-spacing">
-        <HeroSection />
-        <AboutSection />
-        <WorkSection />
-        <ImpactSection />
-        <StoriesSection />
-        <DonationSection />
-        <ContactSection />
+    <div className="min-h-screen w-full spatial-container">
+      <SpatialNavigation />
+      <main className="w-full">
+        <SpatialHero />
+        <SpatialAbout />
+        <SpatialPrograms />
+        <SpatialImpact />
+        <SpatialStories />
+        <SpatialContact />
       </main>
-      <Footer />
+      <SpatialFooter />
     </div>
   );
 };
