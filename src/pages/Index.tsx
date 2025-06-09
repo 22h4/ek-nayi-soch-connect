@@ -9,46 +9,19 @@ import StoriesSection from '@/components/StoriesSection';
 import DonationSection from '@/components/DonationSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
-import ParallaxWrapper from '@/components/ParallaxWrapper';
 
 const Index = () => {
   return (
-    <div className="min-h-screen overflow-x-hidden no-spacing">
+    <div className="min-h-screen w-full no-spacing">
       <Navigation />
-      <main className="relative no-spacing">
-        <div className="seamless-section">
-          <HeroSection />
-        </div>
-        <div className="seamless-section">
-          <ParallaxWrapper speed={0.05}>
-            <AboutSection />
-          </ParallaxWrapper>
-        </div>
-        <div className="seamless-section">
-          <ParallaxWrapper speed={0.08}>
-            <WorkSection />
-          </ParallaxWrapper>
-        </div>
-        <div className="seamless-section">
-          <ParallaxWrapper speed={0.03}>
-            <ImpactSection />
-          </ParallaxWrapper>
-        </div>
-        <div className="seamless-section">
-          <ParallaxWrapper speed={0.06}>
-            <StoriesSection />
-          </ParallaxWrapper>
-        </div>
-        <div className="seamless-section">
-          <ParallaxWrapper speed={0.04}>
-            <DonationSection />
-          </ParallaxWrapper>
-        </div>
-        <div className="seamless-section">
-          <ParallaxWrapper speed={0.02}>
-            <ContactSection />
-          </ParallaxWrapper>
-        </div>
+      <main className="w-full no-spacing">
+        <HeroSection />
+        <AboutSection />
+        <WorkSection />
+        <ImpactSection />
+        <StoriesSection />
+        <DonationSection />
+        <ContactSection />
       </main>
       <Footer />
     </div>
