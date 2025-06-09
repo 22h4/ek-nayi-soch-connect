@@ -13,28 +13,42 @@ import ParallaxWrapper from '@/components/ParallaxWrapper';
 
 const Index = () => {
   return (
-    <div className="min-h-screen overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden no-spacing">
       <Navigation />
-      <main className="relative">
-        <HeroSection />
-        <ParallaxWrapper speed={0.05}>
-          <AboutSection />
-        </ParallaxWrapper>
-        <ParallaxWrapper speed={0.08}>
-          <WorkSection />
-        </ParallaxWrapper>
-        <ParallaxWrapper speed={0.03}>
-          <ImpactSection />
-        </ParallaxWrapper>
-        <ParallaxWrapper speed={0.06}>
-          <StoriesSection />
-        </ParallaxWrapper>
-        <ParallaxWrapper speed={0.04}>
-          <DonationSection />
-        </ParallaxWrapper>
-        <ParallaxWrapper speed={0.02}>
-          <ContactSection />
-        </ParallaxWrapper>
+      <main className="relative no-spacing">
+        <div className="seamless-section">
+          <HeroSection />
+        </div>
+        <div className="seamless-section">
+          <ParallaxWrapper speed={0.05}>
+            <AboutSection />
+          </ParallaxWrapper>
+        </div>
+        <div className="seamless-section">
+          <ParallaxWrapper speed={0.08}>
+            <WorkSection />
+          </ParallaxWrapper>
+        </div>
+        <div className="seamless-section">
+          <ParallaxWrapper speed={0.03}>
+            <ImpactSection />
+          </ParallaxWrapper>
+        </div>
+        <div className="seamless-section">
+          <ParallaxWrapper speed={0.06}>
+            <StoriesSection />
+          </ParallaxWrapper>
+        </div>
+        <div className="seamless-section">
+          <ParallaxWrapper speed={0.04}>
+            <DonationSection />
+          </ParallaxWrapper>
+        </div>
+        <div className="seamless-section">
+          <ParallaxWrapper speed={0.02}>
+            <ContactSection />
+          </ParallaxWrapper>
+        </div>
       </main>
       <Footer />
     </div>
